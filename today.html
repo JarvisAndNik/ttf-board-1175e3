@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Tap → Follow — Today</title>
+<title>Tap → Follow — Replies Sep 25</title>
 <style>
 body{margin:0;background:#0C1214;color:#EAF2F0;font-family:-apple-system,BlinkMacSystemFont,sans-serif;
   display:flex;align-items:center;justify-content:center;min-height:100vh}
@@ -18,7 +18,7 @@ p{color:#8FA5A1;font-size:12px;font-family:ui-monospace,Menlo,monospace;letter-s
 </head>
 <body>
 <div class="box">
-  <h1>Tap <span>→</span> Today</h1>
+  <h1>Tap <span>→</span> Replies Sep 25</h1>
   <p id="st">UNLOCKING…</p>
 </div>
 <script>
@@ -33,7 +33,7 @@ p{color:#8FA5A1;font-size:12px;font-family:ui-monospace,Menlo,monospace;letter-s
     const bin = atob(s), a = new Uint8Array(bin.length);
     for (let i = 0; i < bin.length; i++) a[i] = bin.charCodeAt(i); return a; }
   try {
-    const resp = await fetch('payload-today.b64', {cache: 'no-store'});
+    const resp = await fetch('payload-replies-sep25.b64', {cache: 'no-store'});
     if (!resp.ok) throw new Error('payload fetch ' + resp.status);
     const raw = b64uToBytes((await resp.text()).trim());
     const key = await crypto.subtle.importKey('raw', b64uToBytes(k), 'AES-GCM', false, ['decrypt']);
