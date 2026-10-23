@@ -2,7 +2,7 @@
 let data = null, selected = null, filter = 'ready', key = '', loading = false;
 const $ = id => document.getElementById(id);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const fmt = value => value ? new Date(value).toLocaleString('en-US',{timeZone:'America/Los_Angeles',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}) : 'Unknown';
+const fmt = value => value ? new Date(value).toLocaleString('en-US',{timeZone:'America/Los_Angeles',year:'numeric',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}) : 'Unknown';
 function storageGet(name){try{return localStorage.getItem(name);}catch(e){return null;}}
 function storageSet(name,value){try{localStorage.setItem(name,value);}catch(e){toast('Browser storage unavailable; keep this tab open.');}}
 function bytes(s){return Uint8Array.from(atob(s.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0));}
@@ -19,20 +19,20 @@ function renderList(){
   $('list').innerHTML=items.map(i=>'<button class="lead '+(i.person_id===selected?'selected':'')+'" data-id="'+i.person_id+'"><div class="row"><span class="name">'+esc(i.name)+'</span><span class="pill '+(review(i)?'review':i.state==='no_reply_needed'?'done':'')+'">'+esc(label(i))+'</span></div><div class="preview">'+esc(i.trigger.body||'[Attachment]')+'</div><div class="muted">'+esc(fmt(i.trigger.at))+' · '+esc(i.route.kind==='group'?'Group conversation':'Direct conversation')+'</div></button>').join('')||'<div class="empty">'+(query?'No matching conversations.':filter==='ready'?'No ready drafts in this scan. Check Needs review for requests that need your input.':'Nothing here right now.')+'</div>';
   document.querySelectorAll('.lead').forEach(el=>el.onclick=()=>openConversation(Number(el.dataset.id)));
 }
-function bubble(m){return '<div class="bubble '+(m.who==='NIK'?'me':'')+'"><span class="speaker">'+esc(m.who)+' · thread '+esc(m.chats.join(', '))+'</span>'+esc(m.body||'')+(m.attachment?'\n[Attachment — open Messages to view]':'')+(m.decode_failed?'\n[Message could not be decoded]':'')+'<small>'+esc(fmt(m.at))+(m.send_status&&m.send_status!=='sent'?' · '+esc(m.send_status):'')+'</small></div>';}
+function bubble(m,mainChat){return '<div class="bubble '+(m.who==='NIK'?'me':'')+'"><span class="speaker">'+esc(m.who)+(mainChat&&!m.chats.includes(mainChat)?' · Related conversation':'')+'</span>'+esc(m.body||'')+(m.attachment?'\n[Attachment — open Messages to view]':'')+(m.decode_failed?'\n[Message could not be decoded]':'')+'<small>'+esc(fmt(m.at))+(m.send_status&&m.send_status!=='sent'?' · '+esc(m.send_status):'')+'</small></div>';}
 function renderDetail(){
   const i=data.items.find(x=>x.person_id===selected);
   if(!i){$('detail').innerHTML='<div class="empty">This conversation is no longer awaiting your reply in the latest scan.</div>';return;}
   const result=i.result||{};
   const route=i.route.kind==='group'?'Group · '+i.route.recipients.join(', '):i.route.recipients.join(', ')||'Original thread';
   let html='<div class="detail-top"><button class="back" id="back">‹ Inbox</button><div><h1>'+esc(i.name)+'</h1><div class="muted">'+esc(i.tags.join(' · '))+'</div></div></div><div class="muted">'+esc(route)+'<br>Latest scan '+esc(fmt(data.scan_at))+'</div>';
-  html+='<div class="section-label">Recent conversation</div><div class="conversation">'+i.messages.slice(-8).map(bubble).join('')+'</div>';
-  html+='<details><summary>Read all '+i.messages.length+' messages across related threads</summary><div class="conversation">'+i.messages.map(bubble).join('')+'</div></details>';
+  html+='<div class="section-label">Their latest message</div><div class="conversation">'+bubble(i.trigger,i.chat_id)+'</div>';
   if(i.state==='ready'){
     html+='<div class="composer"><label class="section-label" for="draft">Your reply · edit before sending</label><textarea id="draft">'+esc(draftText(i))+'</textarea><p class="reason">'+esc(result.reason)+'</p><div class="actions"><button class="primary" id="open-message">Review in Messages</button><button id="copy">Copy reply</button></div><p class="muted">'+esc(i.route.reason)+' You send from Messages.</p><p class="muted" id="edit-status">Drafted '+esc(fmt(i.drafted_at))+'. Opening Messages does not mark it sent.</p></div>';
   }else{
     html+='<div class="composer"><span class="pill '+(review(i)?'review':'done')+'">'+esc(label(i))+'</span><p class="reason">'+esc(i.hold||result.reason||'Waiting for a context-aware draft.')+'</p><div class="notice">'+esc(result.next_step||'The next scan will retry pending work. You can review the original thread now.')+'</div><div class="actions"><button id="open-original">Open original conversation</button></div></div>';
   }
+  html+='<details><summary>Read all '+i.messages.length+' messages across related conversations</summary><div class="conversation">'+i.messages.map(m=>bubble(m,i.chat_id)).join('')+'</div></details>';
   if(i.notes?.length){html+='<details><summary>FUB notes · '+i.notes.length+' · checked '+esc(fmt(i.crm_checked_at))+'</summary>'+i.notes.map(n=>'<pre class="note">'+esc(fmt(n.created))+'\n'+esc(n.body)+'</pre>').join('')+'</details>';}
   html+='<footer>Messages can arrive late through iCloud. No visible reply as of '+esc(fmt(data.scan_at))+'. Attachment content and live listing availability require review.</footer>';
   $('detail').innerHTML=html;
