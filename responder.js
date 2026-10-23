@@ -1,5 +1,6 @@
 'use strict';
 let data = null, selected = null, filter = 'ready', key = '', loading = false;
+let controlState=null, requesting=false, checkingControl=false, controlTimer=null;
 const $ = id => document.getElementById(id);
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const fmt = value => value ? new Date(value).toLocaleString('en-US',{timeZone:'America/Los_Angeles',year:'numeric',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}) : 'Unknown';
@@ -82,13 +83,72 @@ async function load(){
     const after=incoming.items.find(i=>i.person_id===selected);
     const same=before&&after&&before.fingerprint===after.fingerprint&&before.state===after.state;
     data=incoming;storageSet('ttf-site-key',key);
-    $('unlock').classList.add('hidden');$('app').classList.remove('hidden');status();renderList();
+    $('unlock').classList.add('hidden');$('app').classList.remove('hidden');status();renderList();renderControl();
+    if(!controlTimer){checkControl();controlTimer=setInterval(()=>{if(!document.hidden)checkControl();},5000);}
     if(selected&&!same){renderDetail();if(before)toast('This conversation changed. Review the latest messages.');}
   }catch(e){
     if(data){$('status').textContent='Refresh failed. Showing the last successful scan from '+fmt(data.scan_at)+'.';$('status').classList.add('warning');}
     else{$('unlock-error').textContent='Could not unlock the inbox. Check your private key and connection.';$('unlock-error').classList.remove('hidden');}
   }finally{loading=false;$('refresh').disabled=false;}
 }
+async function controlRPC(name,extra={}){
+  const config=data?.manual_control;
+  if(!config)throw new Error('Update button is not connected yet. Reload the board.');
+  const controller=new AbortController();
+  const timeout=setTimeout(()=>controller.abort(),15000);
+  try{
+    const response=await fetch(config.url+'/rest/v1/rpc/'+name,{method:'POST',
+      headers:{apikey:config.anon_key,Authorization:'Bearer '+config.anon_key,'Content-Type':'application/json'},
+      body:JSON.stringify({p_token:config.token,...extra}),signal:controller.signal});
+    if(!response.ok)throw new Error('Could not reach the scan service. Try again.');
+    return await response.json();
+  }finally{clearTimeout(timeout);}
+}
+function renderControl(){
+  const request=controlState?.request;
+  const busy=request&&['queued','running'].includes(request.status);
+  const online=controlState?.heartbeat_at&&Date.now()-Date.parse(controlState.heartbeat_at)<90000;
+  $('update-responder').disabled=!data?.manual_control||requesting||Boolean(busy);
+  $('update-responder').textContent=requesting?'Requesting…':busy?(request.status==='queued'?'Scan queued…':'Updating…'):'Update Responder';
+  let text='Tap Update Responder to scan messages and prepare new drafts.';
+  if(requesting)text='Requesting a fresh scan…';
+  else if(busy)text=request.status==='queued'?(online?'Scan queued. Your Mac will start shortly.':'Scan queued. Waiting for your Mac to be awake and online.'):(online?'Updating Responder. Reading messages, preparing drafts, and publishing. This can take a few minutes.':'Scan connection interrupted. Waiting for your Mac to reconnect.');
+  else if(request?.status==='failed')text=request.message;
+  else if(request?.status==='succeeded')text=request.message+' · '+fmt(request.finished_at);
+  else if(controlState&&!online)text='Your Mac is offline. An update will wait until it is awake and online.';
+  $('scan-status').textContent=text;
+}
+async function checkControl(){
+  if(checkingControl||!data?.manual_control)return;
+  checkingControl=true;
+  try{
+    controlState=await controlRPC('responder_status');renderControl();
+    const request=controlState.request;
+    if(request&&['succeeded','failed'].includes(request.status)){
+      storageSet('responder-request-id','');
+      if(request.status==='succeeded'&&storageGet('responder-loaded-request')!==request.id){
+        await load();
+        if(Date.parse(data?.generated_at)>=Date.parse(request.started_at))storageSet('responder-loaded-request',request.id);
+      }
+    }
+  }catch(e){$('scan-status').textContent='Cannot reach your Mac’s update service right now. Saved drafts are still available.';}
+  finally{checkingControl=false;}
+}
+async function updateResponder(){
+  if(requesting||!data?.manual_control)return;
+  if(['queued','running'].includes(controlState?.request?.status))return;
+  requesting=true;renderControl();
+  const requestId=storageGet('responder-request-id')||crypto.randomUUID();
+  storageSet('responder-request-id',requestId);
+  try{
+    controlState=await controlRPC('responder_request',{p_request_id:requestId});
+    requesting=false;renderControl();checkControl();
+  }catch(e){
+    requesting=false;renderControl();
+    $('scan-status').textContent='Could not confirm the request. Tap Update Responder to retry; the same request will not run twice.';
+  }
+}
+$('update-responder').onclick=updateResponder;
 $('refresh').onclick=load;
 $('search').oninput=renderList;
 document.querySelectorAll('[data-filter]').forEach(el=>el.onclick=()=>{filter=el.dataset.filter;document.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('active',b===el));renderList();});
