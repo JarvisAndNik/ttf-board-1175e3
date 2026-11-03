@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Josiah — Follow-Up Texts (Nov 3)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f0f; color: #f0f0f0; min-height: 100vh; }
+  header { background: #1a1a1a; border-bottom: 1px solid #2a2a2a; padding: 16px 20px; position: sticky; top: 0; z-index: 10; }
+  header h1 { font-size: 17px; font-weight: 700; color: #fff; }
+  header p { font-size: 12px; color: #888; margin-top: 2px; }
+  .cards { padding: 12px 16px; display: flex; flex-direction: column; gap: 14px; max-width: 540px; margin: 0 auto; }
+  .card { background: #1c1c1e; border-radius: 14px; overflow: hidden; border: 1px solid #2c2c2e; }
+  .card-header { padding: 14px 16px 10px; display: flex; justify-content: space-between; align-items: flex-start; }
+  .name { font-size: 16px; font-weight: 700; color: #fff; }
+  .meta { font-size: 11px; color: #888; margin-top: 3px; }
+  .badge { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; margin-left: 8px; }
+  .hot { background: #ff3b3020; color: #ff6961; border: 1px solid #ff3b3040; }
+  .warm { background: #ff950020; color: #ffb340; border: 1px solid #ff950040; }
+  .nurture { background: #30d15820; color: #34c759; border: 1px solid #30d15840; }
+  .context { padding: 0 16px 10px; font-size: 12px; color: #aaa; line-height: 1.5; border-bottom: 1px solid #2c2c2e; }
+  .context b { color: #ddd; }
+  .msg-section { padding: 12px 16px; }
+  .msg-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #555; margin-bottom: 6px; }
+  .msg-box { background: #2c2c2e; border-radius: 10px; padding: 12px; font-size: 14px; color: #e8e8e8; line-height: 1.5; }
+  .copy-btn { margin-top: 8px; display: inline-flex; align-items: center; gap: 5px; background: #3a3a3c; border: none; color: #c8c8c8; font-size: 12px; padding: 6px 12px; border-radius: 8px; cursor: pointer; }
+  .copy-btn:active { background: #48484a; }
+  .actions { padding: 10px 16px 14px; display: flex; gap: 8px; }
+  .btn { flex: 1; padding: 10px; border-radius: 10px; border: none; font-size: 14px; font-weight: 600; text-decoration: none; text-align: center; cursor: pointer; display: block; }
+  .btn-call { background: #30d158; color: #000; }
+  .btn-sms { background: #0a84ff; color: #fff; cursor: pointer; }
+  .last { font-size: 11px; color: #666; padding: 0 16px 12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Follow-Up Texts</h1>
+  <p>Josiah — 6 contacts not touched in 5+ days · Nov 3, 2026</p>
+</header>
+<div class="cards">
+
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Daniel Burkart</div><div class="meta">📍 Madera · $350–420k · 1 acre + shop · FHA 203k</div></div>
+      <span class="badge hot">🔥 VIP</span>
+    </div>
+    <div class="context">Submitted <b>two offers on Ave 13</b> (28841) on Oct 22. Nik texted Oct 27 that nothing new worth sending in Madera yet — small lots only. <b>No offer decision heard back yet.</b> Pre-approved to $425k with Corbin.</div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-burkart">Hey Daniel!! This is Josiah from Nik's team. Just wanted to check in — have you heard anything back on the Ave 13 offers? I know Nik has been keeping an eye out for more Madera properties with the land and shop space you need. Let me know where things are at!</div>
+      <button class="copy-btn" onclick="copyMsg('msg-burkart',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:4087699598">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('4087699598','msg-burkart');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">Last activity: Oct 27 · (408) 769-9598</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Daniel Fox</div><div class="meta">📍 West Madera · $400k · 3bd/2ba big yard · VA Loan</div></div>
+      <span class="badge hot">🔥 Active</span>
+    </div>
+    <div class="context">Police officer, pre-approved $400k VA. Wants <b>west side of Madera only</b>, big back/side yard. Nik sent him <b>22496 Avenue 18 3/4</b> and <b>1193 Magnolia Ct W</b> on Oct 27 — no reply yet.</div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-fox">Hey Daniel! It's Josiah with Nik's team. Just checking in on those two homes Nik sent over — 22496 Avenue 18 3/4 and 1193 Magnolia Ct W. What do you think? Would you want to go walk either of them? What day works best for you?</div>
+      <button class="copy-btn" onclick="copyMsg('msg-fox',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5594791775">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5594791775','msg-fox');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">Last activity: Oct 27 · (559) 479-1775</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Christina</div><div class="meta">📍 Fresno · $200–300k · 3bd renovated · approved $275k</div></div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="context">Had showings Oct 24 at <b>4758 E Montecito + 320 N Effie</b>. Nik called and texted Oct 27 to confirm a Friday showing. <b>Seems a little off</b> per Nik — find out exactly what she wants.</div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-christina">Hey Christina! This is Josiah from Nik's team. Just wanted to check in with you — how did you feel about the homes you've seen so far? I want to make sure we're sending you exactly what you're looking for. Is there anything specific you've liked or didn't like? We want to find the right one for you!</div>
+      <button class="copy-btn" onclick="copyMsg('msg-christina',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5597763921">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5597763921','msg-christina');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">Last activity: Oct 27 · (559) 776-3921</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Berenice Zavala</div><div class="meta">📍 Reedley/Dinuba · $330k · country/ranch · first-time buyer</div></div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="context">First-time buyer with dad + husband. Wants <b>country/ranch style in Reedley/Orange Cove/Dinuba</b>. Toured and liked <b>1145 D St Reedley</b> (rooms a bit small). Last contact Oct 26 — no reply yet.</div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-berenice">Hey Berenice! It's Josiah with Nik's team. I know you're looking for something with that country/ranch feel out in the Reedley or Dinuba area. Are there any homes you've seen lately you wanted to check out? I want to make sure we don't miss anything good for you!</div>
+      <button class="copy-btn" onclick="copyMsg('msg-berenice',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5595964243">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5595964243','msg-berenice');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">Last activity: Oct 26 · (559) 596-4243</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Warren Verlander</div><div class="meta">📍 NW Fresno · under $500k · single-story, RV parking</div></div>
+      <span class="badge nurture">🌱 Nurture</span>
+    </div>
+    <div class="context">Bay Area man moving near his daughter. Pre-approved $442k. Wants <b>NW Fresno, single-story 3/2, RV parking, no solar lease</b>. Zero pressure — he names his own trip dates. Last replied Oct 20 "Thanks 😊".</div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-warren">Hey Warren! This is Josiah from Nik's team. Hope you're doing well! Just checking in — are you planning a trip to Fresno anytime soon? Whenever you're ready, we'll have a great list of single-story homes with RV parking lined up for you. No rush at all, just want to be ready when you are!</div>
+      <button class="copy-btn" onclick="copyMsg('msg-warren',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:9259975167">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('9259975167','msg-warren');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">Last activity: Oct 20 · (925) 997-5167</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Misael Ramirez</div><div class="meta">📍 Fresno (near Hwy 41) · $250–260k · 3bd SFR · Dec/Jan</div></div>
+      <span class="badge nurture">🌱 Nurture</span>
+    </div>
+    <div class="context">Pre-approved ~$251k. Waiting on a raise before buying (Dec/Jan). <b>Nik said: one light touch in early November — that's now.</b> Wants 3bd SFR near Hwy 41, NOT flipped, no apartments. <b>⚠️ Only contact after 3pm.</b></div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-misael">Hey Misael! It's Josiah from Nik's team. Hope work has been treating you well — sounds like you've been putting in the hours! Just wanted to check in. Have you heard back about your raise yet? We've been keeping an eye out for some solid 3-bedroom options near Hwy 41 for whenever you're ready.</div>
+      <button class="copy-btn" onclick="copyMsg('msg-misael',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5593759569">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5593759569','msg-misael');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">Last activity: Oct 22 · ⚠️ Call after 3pm only · (559) 375-9569</div>
+  </div>
+
+</div>
+<script>
+function openSMS(phone, msgId) {
+  var text = document.getElementById(msgId).innerText;
+  window.location.href = 'sms:' + phone + '&body=' + encodeURIComponent(text);
+}
+function copyMsg(id, btn) {
+  var text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(function() {
+    btn.textContent = '✅ Copied!';
+    setTimeout(function(){ btn.textContent = '📋 Copy text'; }, 2000);
+  }).catch(function() {
+    btn.textContent = 'Select & copy manually';
+  });
+}
+</script>
+</body>
+</html>
