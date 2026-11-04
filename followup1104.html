@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Josiah — Homes to Send (Nov 4)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f0f; color: #f0f0f0; min-height: 100vh; }
+  header { background: #1a1a1a; border-bottom: 1px solid #2a2a2a; padding: 16px 20px; position: sticky; top: 0; z-index: 10; }
+  header h1 { font-size: 17px; font-weight: 700; color: #fff; }
+  header p { font-size: 12px; color: #888; margin-top: 2px; }
+  .cards { padding: 12px 16px; display: flex; flex-direction: column; gap: 14px; max-width: 540px; margin: 0 auto; }
+  .card { background: #1c1c1e; border-radius: 14px; overflow: hidden; border: 1px solid #2c2c2e; }
+  .card-header { padding: 14px 16px 10px; display: flex; justify-content: space-between; align-items: flex-start; }
+  .name { font-size: 16px; font-weight: 700; color: #fff; }
+  .meta { font-size: 11px; color: #888; margin-top: 3px; }
+  .badge { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; margin-left: 8px; }
+  .hot { background: #ff3b3020; color: #ff6961; border: 1px solid #ff3b3040; }
+  .warm { background: #ff950020; color: #ffb340; border: 1px solid #ff950040; }
+  .nurture { background: #30d15820; color: #34c759; border: 1px solid #30d15840; }
+  .context { padding: 0 16px 10px; font-size: 12px; color: #aaa; line-height: 1.5; border-bottom: 1px solid #2c2c2e; }
+  .context b { color: #ddd; }
+  .homes { padding: 10px 16px; border-bottom: 1px solid #2c2c2e; }
+  .homes-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #555; margin-bottom: 6px; }
+  .home-item { background: #252527; border-radius: 8px; padding: 8px 10px; margin-bottom: 6px; font-size: 12px; color: #ccc; line-height: 1.4; }
+  .home-item b { color: #fff; font-size: 13px; }
+  .home-price { color: #34c759; font-weight: 700; }
+  .msg-section { padding: 12px 16px; }
+  .msg-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #555; margin-bottom: 6px; }
+  .msg-box { background: #2c2c2e; border-radius: 10px; padding: 12px; font-size: 14px; color: #e8e8e8; line-height: 1.6; }
+  .copy-btn { margin-top: 8px; display: inline-flex; align-items: center; gap: 5px; background: #3a3a3c; border: none; color: #c8c8c8; font-size: 12px; padding: 6px 12px; border-radius: 8px; cursor: pointer; }
+  .copy-btn:active { background: #48484a; }
+  .actions { padding: 10px 16px 14px; display: flex; gap: 8px; }
+  .btn { flex: 1; padding: 10px; border-radius: 10px; border: none; font-size: 14px; font-weight: 600; text-decoration: none; text-align: center; cursor: pointer; display: block; }
+  .btn-call { background: #30d158; color: #000; }
+  .btn-sms { background: #0a84ff; color: #fff; cursor: pointer; }
+  .last { font-size: 11px; color: #666; padding: 0 16px 12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Homes to Send</h1>
+  <p>Josiah — 8 buyers with 3 active listings each · Nov 4, 2026</p>
+</header>
+<div class="cards">
+
+  <!-- 1. Carlos Larios -->
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Carlos Larios</div><div class="meta">📍 Reedley CA · ~$400k · 3bd</div></div>
+      <span class="badge hot">🔥 Active</span>
+    </div>
+    <div class="context">Very motivated — said he wants to buy <b>$400k around Reedley</b>. Needs homes sent today.</div>
+    <div class="homes">
+      <div class="homes-label">3 Active Listings</div>
+      <div class="home-item"><b>596 W Herbert Ave, Reedley</b><br><span class="home-price">$399,000</span> · 3bd/2ba · 1,985 sqft</div>
+      <div class="home-item"><b>1395 S Rupert Ave, Reedley</b><br><span class="home-price">$385,000</span> · 3bd/2ba · 1,349 sqft</div>
+      <div class="home-item"><b>558 N Steven Ave, Reedley</b><br><span class="home-price">$349,000</span> · 3bd/2ba · 1,008 sqft</div>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-carlos">Hey Carlos!! This is Josiah from Nik's team 😊 I've been watching the Reedley market for you and just found 3 great options in your budget — check these out!
+
+🏠 596 W Herbert Ave, Reedley — $399,000 · 3bd/2ba · 1,985 sqft
+🏠 1395 S Rupert Ave, Reedley — $385,000 · 3bd/2ba · 1,349 sqft
+🏠 558 N Steven Ave, Reedley — $349,000 · 3bd/2ba · 1,008 sqft
+
+Do any of these look good to you? I can get a showing set up fast! 🔑</div>
+      <button class="copy-btn" onclick="copyMsg('msg-carlos',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5596436562">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5596436562','msg-carlos');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">(559) 643-6562</div>
+  </div>
+
+  <!-- 2. Luis Madrigal -->
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Luis Madrigal</div><div class="meta">📍 Fresno CA · $350–450k · first-time buyer · 90k down</div></div>
+      <span class="badge hot">🔥 Active</span>
+    </div>
+    <div class="context">First-time buyer, 700 score, $90k down. Replied "Thanks. I'll take a look at them tonight" when homes were sent before. <b>Moves when you give him good options.</b></div>
+    <div class="homes">
+      <div class="homes-label">3 Active Listings</div>
+      <div class="home-item"><b>215 E Clinton Ave, Fresno 93704</b><br><span class="home-price">$349,900</span> · 3bd/2ba · 1,776 sqft · price drop</div>
+      <div class="home-item"><b>4570 E Tulare St, Fresno 93702</b><br><span class="home-price">$370,000</span> · 3bd/2.5ba · 1,964 sqft</div>
+      <div class="home-item"><b>2947 E San Gabriel Ave, Fresno 93726</b><br><span class="home-price">$419,000</span> · 3bd/2ba · 1,619 sqft</div>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-luis">Hey Luis! It's Josiah from Nik's team 🙌 Great news — I found 3 solid homes in Fresno that fit your budget and would work great with your down payment. Take a look!
+
+🏠 215 E Clinton Ave, Fresno — $349,900 · 3bd/2ba · 1,776 sqft (price just dropped!)
+🏠 4570 E Tulare St, Fresno — $370,000 · 3bd/2.5ba · 1,964 sqft
+🏠 2947 E San Gabriel Ave, Fresno — $419,000 · 3bd/2ba · 1,619 sqft
+
+Which one catches your eye? Happy to schedule a walk-through whenever works for you! 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg-luis',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5594751634">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5594751634','msg-luis');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">(559) 475-1634</div>
+  </div>
+
+  <!-- 3. Jahnessa Muratalla -->
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Jahnessa Muratalla</div><div class="meta">📍 Kerman CA · under $400k · healthcare worker · weekends</div></div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="context">Healthcare worker, mornings replier. Wants <b>under $400k in Kerman</b>. Weekends only for showings. Saturday tour was set before — keep that energy going.</div>
+    <div class="homes">
+      <div class="homes-label">3 Active Listings</div>
+      <div class="home-item"><b>420 S Susan Ave, Kerman</b><br><span class="home-price">$391,950</span> · 3bd/2ba · 1,360 sqft · Open Sat</div>
+      <div class="home-item"><b>16181 W David Ave, Kerman</b><br><span class="home-price">$414,950</span> · 3bd · New Build · Crown Homes</div>
+      <div class="home-item"><b>16209 W Sunset Ave, Kerman</b><br><span class="home-price">$413,950</span> · 3bd · New Build · Crown Homes</div>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-jahnessa">Good morning Jahnessa! This is Josiah from Nik's team ☀️ I found some homes in Kerman I think you'll love — including one that's open this Saturday!
+
+🏠 420 S Susan Ave, Kerman — $391,950 · 3bd/2ba · 1,360 sqft (Open Sat!)
+🏠 16181 W David Ave, Kerman — $414,950 · 3bd · Brand new build
+🏠 16209 W Sunset Ave, Kerman — $413,950 · 3bd · Brand new build
+
+Would you want to check out the Susan Ave one this weekend? Let me know and I'll get it set up for you! 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg-jahnessa',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5598942316">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5598942316','msg-jahnessa');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">(559) 894-2316 · ⚠️ Weekends preferred</div>
+  </div>
+
+  <!-- 4. Serena Vindiola Morales -->
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Serena Vindiola Morales</div><div class="meta">📍 Fresno CA · ~$270k · 3bd · first-time buyer</div></div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="context">First-time buyer ever. Surrogate income $7,500/mo, credit ~630. She's been sharing homes she likes on Zillow — loves 3bd/2ba around Fresno. <b>She's ready, just needs the right home.</b></div>
+    <div class="homes">
+      <div class="homes-label">3 Active Listings</div>
+      <div class="home-item"><b>6606 N 3rd St #101, Fresno 93710</b><br><span class="home-price">$225,000</span> · 3bd/1.5ba · 1,176 sqft · price drop</div>
+      <div class="home-item"><b>2944 E Normal Ave, Fresno 93703</b><br><span class="home-price">~$265,000</span> · 3bd/1ba · 1,250 sqft</div>
+      <div class="home-item"><b>1434 W Terrace Ave, Fresno 93705</b><br><span class="home-price">$350,000</span> · 3bd/2ba · move-in ready · first-time buyer programs apply</div>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-serena">Hey Serena!! It's Josiah from Nik's team 😊 I've been looking for homes just like the ones you've been sharing with us — here are 3 I think you'll really like in Fresno!
+
+🏠 6606 N 3rd St, Fresno — $225,000 · 3bd/1.5ba · 1,176 sqft (price just dropped!)
+🏠 2944 E Normal Ave, Fresno — ~$265,000 · 3bd/1ba · 1,250 sqft
+🏠 1434 W Terrace Ave, Fresno — $350,000 · 3bd/2ba · move-in ready (first-time buyer programs can help here!)
+
+Which one feels right to you? I'd love to set up a tour! 🔑</div>
+      <button class="copy-btn" onclick="copyMsg('msg-serena',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5598017445">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5598017445','msg-serena');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">(559) 801-7445</div>
+  </div>
+
+  <!-- 5. Stephanie Beltran -->
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Stephanie Beltran</div><div class="meta">📍 Fresno area · ~$350k · FHA or USDA loan</div></div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="context">Wants to buy around <b>$350k with FHA or USDA loan</b>. Pre-approval in progress. Ready to move when she finds the right home.</div>
+    <div class="homes">
+      <div class="homes-label">3 Active Listings</div>
+      <div class="home-item"><b>1434 W Terrace Ave, Fresno 93705</b><br><span class="home-price">$350,000</span> · 3bd/2ba · move-in ready · FHA eligible</div>
+      <div class="home-item"><b>1866 W Santa Ana Ave #101, Fresno 93705</b><br><span class="home-price">$350,000</span> · 3bd/2ba · 1,520 sqft · remodeled</div>
+      <div class="home-item"><b>1630 N Delno Ave, Fresno 93705</b><br><span class="home-price">$350,000</span> · 3bd/2.5ba · 1,409 sqft · move-in ready</div>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-stephanie">Hey Stephanie!! This is Josiah from Nik's team 🙌 I found 3 homes right at your budget that are FHA friendly and move-in ready — these are great options for you!
+
+🏠 1434 W Terrace Ave, Fresno — $350,000 · 3bd/2ba · move-in ready
+🏠 1866 W Santa Ana Ave, Fresno — $350,000 · 3bd/2ba · 1,520 sqft · remodeled
+🏠 1630 N Delno Ave, Fresno — $350,000 · 3bd/2.5ba · 1,409 sqft
+
+Any of these look good? I can get you in to see them this week! 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg-stephanie',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5597550359">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5597550359','msg-stephanie');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">(559) 755-0359</div>
+  </div>
+
+  <!-- 6. Berenice Zavala -->
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Berenice Zavala</div><div class="meta">📍 Reedley/Dinuba · ~$330k · country/ranch · first-time buyer</div></div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="context">First-time buyer with dad + husband. Toured 1145 D St Reedley — liked it but rooms were small. Wants that <b>country/ranch feel in Reedley, Orange Cove, or Dinuba</b>. No reply to last outreach Oct 26.</div>
+    <div class="homes">
+      <div class="homes-label">3 Active Listings</div>
+      <div class="home-item"><b>558 N Steven Ave, Reedley</b><br><span class="home-price">$349,000</span> · 3bd/2ba · 1,008 sqft</div>
+      <div class="home-item"><b>862 N Bates Ave, Dinuba</b><br><span class="home-price">$359,000</span> · 3bd/2ba · 1,326 sqft · ranch style</div>
+      <div class="home-item"><b>596 W Herbert Ave, Reedley</b><br><span class="home-price">$399,000</span> · 3bd/2ba · 1,985 sqft · more space</div>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-berenice">Hey Berenice! It's Josiah from Nik's team 😊 I found some homes with that country feel you're looking for in the Reedley and Dinuba area — and these have more room than the last one!
+
+🏠 558 N Steven Ave, Reedley — $349,000 · 3bd/2ba
+🏠 862 N Bates Ave, Dinuba — $359,000 · 3bd/2ba · 1,326 sqft · ranch style
+🏠 596 W Herbert Ave, Reedley — $399,000 · 3bd/2ba · 1,985 sqft (more space for the family!)
+
+Would you and your dad want to go take a look this weekend? Let me know! 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg-berenice',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5595964243">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5595964243','msg-berenice');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">(559) 596-4243</div>
+  </div>
+
+  <!-- 7. Daniel Fox -->
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Daniel Fox</div><div class="meta">📍 West Madera · $400k · VA Loan · 3bd big yard · police officer</div></div>
+      <span class="badge hot">🔥 Active</span>
+    </div>
+    <div class="context">Police officer, pre-approved $400k VA loan. Wants <b>west side of Madera only</b>, big back/side yard. Nik sent 2 homes Oct 27 — no reply yet. Very easy to work with, moves fast when interested.</div>
+    <div class="homes">
+      <div class="homes-label">3 Active Listings</div>
+      <div class="home-item"><b>1412 Roberts Ave, Madera 93637</b><br><span class="home-price">$399,950</span> · 3bd/2ba · 1,285 sqft · newly remodeled · move-in ready</div>
+      <div class="home-item"><b>1232 Oso Dr, Madera 93638</b><br><span class="home-price">$380,000</span> · 3bd/2ba · 1,491 sqft · built 2007</div>
+      <div class="home-item"><b>782 Laina Ave, Madera 93636</b><br><span class="home-price">$384,000</span> · 3bd · new build · extra deep backyard + larger side yard</div>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-fox">Hey Daniel! Josiah here from Nik's team 🙌 Wanted to follow up and also share 3 more homes on the west side of Madera that just caught my eye — including one with an extra deep backyard!
+
+🏠 1412 Roberts Ave, Madera — $399,950 · 3bd/2ba · newly remodeled, move-in ready
+🏠 1232 Oso Dr, Madera — $380,000 · 3bd/2ba · 1,491 sqft
+🏠 782 Laina Ave, Madera — $384,000 · 3bd · new build · extra deep backyard + big side yard
+
+Any of these work for you? VA loan makes these really clean deals. What day works for a walkthrough? 🔑</div>
+      <button class="copy-btn" onclick="copyMsg('msg-fox',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5594791775">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5594791775','msg-fox');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">(559) 479-1775</div>
+  </div>
+
+  <!-- 8. Mohamed Salih Hajamohaideen -->
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Mohamed Salih</div><div class="meta">📍 Fresno CA · ~$100k · no HOA · single family</div></div>
+      <span class="badge hot">🔥 HOT — drove to office</span>
+    </div>
+    <div class="context">Literally <b>drove to the office in person</b> to meet Nik — highest intent on the list. Budget ~$100k, wants no-HOA single family anywhere in Fresno. Manufactured homes work at this price. <b>Get him back moving!</b></div>
+    <div class="homes">
+      <div class="homes-label">3 Active Listings</div>
+      <div class="home-item"><b>3138 W Dakota Ave #194, Fresno 93722</b><br><span class="home-price">$89,000</span> · 3bd/2ba · 1,344 sqft · manufactured · HOA $0</div>
+      <div class="home-item"><b>2533 W McKinley Ave #232, Fresno</b><br><span class="home-price">$120,000</span> · 3bd/2ba · 1,456 sqft · manufactured</div>
+      <div class="home-item"><b>2572 S Willow Ave #201, Fresno 93725</b><br><span class="home-price">~$140,000</span> · manufactured · 1,142 sqft · built 2014</div>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-mohamed">Hey Mohamed! It's Josiah from Nik's team — the office you stopped by 😊 We've been keeping an eye out for you and found some no-HOA options right in your budget in Fresno!
+
+🏠 3138 W Dakota Ave #194, Fresno — $89,000 · 3bd/2ba · 1,344 sqft · HOA: $0
+🏠 2533 W McKinley Ave #232, Fresno — $120,000 · 3bd/2ba · 1,456 sqft
+🏠 2572 S Willow Ave #201, Fresno — ~$140,000 · 1,142 sqft · built 2014
+
+These are manufactured homes — no HOA fees, real ownership. Want to go walk one this week? Let's get you in a home! 🔑</div>
+      <button class="copy-btn" onclick="copyMsg('msg-mohamed',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:6463749466">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('6463749466','msg-mohamed');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">(646) 374-9466</div>
+  </div>
+
+</div>
+<script>
+function openSMS(phone, msgId) {
+  var text = document.getElementById(msgId).innerText;
+  window.location.href = 'sms:' + phone + '&body=' + encodeURIComponent(text);
+}
+function copyMsg(id, btn) {
+  var text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(function() {
+    btn.textContent = '\u2705 Copied!';
+    setTimeout(function(){ btn.textContent = '📋 Copy text'; }, 2000);
+  }).catch(function() {
+    btn.textContent = 'Select & copy manually';
+  });
+}
+</script>
+</body>
+</html>
