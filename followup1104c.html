@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Josiah — Call Scheduling (Nov 4)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f0f; color: #f0f0f0; min-height: 100vh; }
+  header { background: #1a1a1a; border-bottom: 1px solid #2a2a2a; padding: 16px 20px; position: sticky; top: 0; z-index: 10; }
+  header h1 { font-size: 17px; font-weight: 700; color: #fff; }
+  header p { font-size: 12px; color: #888; margin-top: 2px; }
+  .cards { padding: 12px 16px; display: flex; flex-direction: column; gap: 14px; max-width: 540px; margin: 0 auto; }
+  .card { background: #1c1c1e; border-radius: 14px; overflow: hidden; border: 1px solid #2c2c2e; }
+  .card-header { padding: 14px 16px 10px; display: flex; justify-content: space-between; align-items: flex-start; }
+  .name { font-size: 16px; font-weight: 700; color: #fff; }
+  .meta { font-size: 11px; color: #888; margin-top: 3px; }
+  .badge { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; margin-left: 8px; }
+  .hot { background: #ff3b3020; color: #ff6961; border: 1px solid #ff3b3040; }
+  .warm { background: #ff950020; color: #ffb340; border: 1px solid #ff950040; }
+  .nurture { background: #30d15820; color: #34c759; border: 1px solid #30d15840; }
+  .msg-section { padding: 12px 16px; }
+  .msg-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #555; margin-bottom: 6px; }
+  .msg-box { background: #2c2c2e; border-radius: 10px; padding: 12px; font-size: 13px; color: #e8e8e8; line-height: 1.6; white-space: pre-wrap; }
+  .copy-btn { margin-top: 8px; display: inline-flex; align-items: center; gap: 5px; background: #3a3a3c; border: none; color: #c8c8c8; font-size: 12px; padding: 6px 12px; border-radius: 8px; cursor: pointer; }
+  .copy-btn:active { background: #48484a; }
+  .actions { padding: 10px 16px 14px; display: flex; gap: 8px; }
+  .btn { flex: 1; padding: 10px; border-radius: 10px; border: none; font-size: 14px; font-weight: 600; text-decoration: none; text-align: center; cursor: pointer; display: block; }
+  .btn-call { background: #30d158; color: #000; }
+  .btn-sms { background: #0a84ff; color: #fff; cursor: pointer; }
+  .last { font-size: 11px; color: #666; padding: 0 16px 12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>📞 Call-Scheduling Texts</h1>
+  <p>Josiah — 50 contacts · ask when they're free for a call · Nov 4, 2026</p>
+</header>
+<div class="cards">
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Serena Vindiola Morales</div>
+        <div class="meta">1st-time buyer · surrogate income · credit ~630</div>
+      </div>
+      <span class="badge hot">🔥 Hot Lead</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg0">Hey Serena! 😊 This is Josiah from Nik&#x27;s team at Narwal Estates! I know you&#x27;re working toward becoming a first-time homeowner — that&#x27;s such an exciting step! 🏡 I&#x27;d love to jump on a quick call and walk you through exactly what the process looks like for you. What day this week works best? 📲</div>
+      <button class="copy-btn" onclick="copyMsg('msg0',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5598017445">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5598017445','msg0');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 801-7445</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Stephanie Beltran</div>
+        <div class="meta">$350k · FHA or USDA · has lender · needs homes</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg1">Hey Stephanie! 👋 This is Josiah from Nik&#x27;s team! You&#x27;re already ahead of the game — lender set, budget locked, ready to go 🌟 I want to make sure we&#x27;re sending you the right homes. Would you have 10 minutes for a quick call this week so I can dial in exactly what you&#x27;re looking for? 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg1',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5597550359">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5597550359','msg1');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 755-0359</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Carlos Larios</div>
+        <div class="meta">$400k · Reedley area · very motivated</div>
+      </div>
+      <span class="badge hot">🔥 Hot Lead</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg2">Hey Carlos!! 🌟 This is Josiah from Nik&#x27;s team! I know you&#x27;re motivated and want to move fast in the Reedley area — I love that energy! 🏡 I want to make sure we don&#x27;t miss the right one for you. Would you be free for a quick 10-minute call this week? 📞</div>
+      <button class="copy-btn" onclick="copyMsg('msg2',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5596436562">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5596436562','msg2');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 643-6562</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Maria Martinez</div>
+        <div class="meta">filling application · daughter on loan · $2,800/mo max payment</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg3">Hey Maria! 😊 This is Josiah from Nik&#x27;s team! I love that your daughter is going to be on the loan with you — that makes this extra special! 🏡 I want to make sure we find something that keeps your payment right at $2,800/mo or under. What day this week works for a quick call? 📲</div>
+      <button class="copy-btn" onclick="copyMsg('msg3',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5596300168">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5596300168','msg3');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 630-0168</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Katie Scotia</div>
+        <div class="meta">watching 7th St area · wants specific streets</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg4">Hey Katie! 👋 This is Josiah from Nik&#x27;s team! I want to make sure we have the right homes lined up for you on 7th St 🏠 Would you be free for a quick call this week so I can make sure we&#x27;re totally in sync on what you&#x27;re looking for? 🌟</div>
+      <button class="copy-btn" onclick="copyMsg('msg4',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5592835303">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5592835303','msg4');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 283-5303</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Kassandra</div>
+        <div class="meta">0-3 month foreclosure shopper · fast timeline</div>
+      </div>
+      <span class="badge hot">🔥 Hot Lead</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg5">Hey Kassandra! 🌟 This is Josiah from Nik&#x27;s team! I know you&#x27;re on a tight timeline and want to move in the next few months — I want to make sure we move FAST for you 🏡 Can we set up a quick call this week? I want to make sure nothing slips through the cracks 📞</div>
+      <button class="copy-btn" onclick="copyMsg('msg5',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5598145822">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5598145822','msg5');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 814-5822</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Destina</div>
+        <div class="meta">looking in CA 93212 (Corcoran area) · seller lead</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg6">Hey Destina! 😊 This is Josiah from Nik&#x27;s team! I saw you&#x27;ve been looking around the Corcoran area — that&#x27;s a market we know well 🌟 I&#x27;d love to get on a quick call with you this week and learn more about what you&#x27;re looking for. What day works best? 📲</div>
+      <button class="copy-btn" onclick="copyMsg('msg6',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:2096485975">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('2096485975','msg6');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">209 648-5975</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Luis Madrigal</div>
+        <div class="meta">$350-450k Fresno · 700 score · $90k down · pre-approved</div>
+      </div>
+      <span class="badge hot">🔥 Hot Lead</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg7">Hey Luis! 🌟 This is Josiah from Nik&#x27;s team! You&#x27;re in a STRONG position — 700 credit, $90k down, pre-approved and ready 💪 I want to make sure we find the perfect home for you in Fresno! What day works for a quick call this week? 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg7',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5594751634">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5594751634','msg7');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 475-1634</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Alexis Sambrano</div>
+        <div class="meta">came to showing 9/21 · serious buyer</div>
+      </div>
+      <span class="badge hot">🔥 Hot Lead</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg8">Hey Alexis! 😊 This is Josiah from Nik&#x27;s team! I love that you came out to check out that home — it shows how serious you are and I respect that! 🏡 I want to keep the momentum going for you. When are you free for a quick call this week? 📞</div>
+      <button class="copy-btn" onclick="copyMsg('msg8',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5596699875">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5596699875','msg8');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 669-9875</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Ivonne Salvador</div>
+        <div class="meta">friendly on day 1 · best reachable after 5pm</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg9">Hey Ivonne! 👋 This is Josiah from Nik&#x27;s team! I just wanted to check in — I know life gets busy 😊 I&#x27;d love to reconnect on a quick call. Are you usually free after 5pm? Just want to make sure we&#x27;re still taking great care of you 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg9',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5597645580">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5597645580','msg9');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 764-5580</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Bryan Joslin</div>
+        <div class="meta">construction worker · toured 9/14 · real intent</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg10">Hey Bryan! 🌟 This is Josiah from Nik&#x27;s team! I know you stay busy in construction but I wanted to check in — you toured some homes back in September and showed real interest 🏡 What day this week could you spare 10 minutes for a quick call? Even early morning or evenings work for me! 📞</div>
+      <button class="copy-btn" onclick="copyMsg('msg10',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:2096478567">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('2096478567','msg10');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">209 647-8567</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Marisela Zuniga</div>
+        <div class="meta">wanted afternoon showing · tenant issues delayed her</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg11">Hey Marisela! 😊 This is Josiah from Nik&#x27;s team! I want to make sure we get you the showing you deserve — I know there were some hiccups before but I&#x27;m here to make it smooth this time! 🌟 Are you free for a quick call this week? Let&#x27;s lock something in 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg11',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5596809697">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5596809697','msg11');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 680-9697</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Jose ArevaloRodriguez</div>
+        <div class="meta">muy paciente · 3 showing attempts failed · Spanish</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg12">Hola Jose! 😊 Soy Josiah del equipo de Nik! Usted ha sido muy paciente con nosotros y se lo agradecemos mucho 🙏 Quiero asegurarme de que encontremos la casa perfecta para usted. ¿Cuándo estaría disponible para una llamada rápida esta semana? 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg12',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:2095019350">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('2095019350','msg12');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">209 501-9350</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Rawan</div>
+        <div class="meta">warm referral · husband co-decides · travels from LA</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg13">Hey Rawan! 👋 This is Josiah from Nik&#x27;s team! I know you travel all the way from LA to look at homes — I want to make sure every trip is worth it for you and your husband 🌟 I&#x27;d love to plan ahead on a quick call so we have the best homes ready when you come out. What day works? 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg13',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5593949061">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5593949061','msg13');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 394-9061</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Arianna Alejo</div>
+        <div class="meta">fiancé&#x27;s October window · 173 McKenna target</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg14">Hey Arianna! 😊 This is Josiah from Nik&#x27;s team! October is here and I know you and your fiancé are ready to get serious about the search — I love that! 🌟 Would you be free for a quick call this week so we can make a solid plan together? 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg14',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5595130490">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5595130490','msg14');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 513-0490</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Marina</div>
+        <div class="meta">best reached by phone · Spanish call needed</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg15">Hola Marina! 👋 Soy Josiah del equipo de Nik! Quiero conectarme contigo en una llamada rápida esta semana — a veces es más fácil hablar que texear 😊 ¿Cuándo estarías disponible? Puedo llamar en español también 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg15',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5597041533">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5597041533','msg15');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 704-1533</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Crystal Maciel</div>
+        <div class="meta">said YES to qualification · went quiet</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg16">Hey Crystal! 🌟 This is Josiah from Nik&#x27;s team! I remember you said you were ready to get your qualification going — I haven&#x27;t forgotten about you! 😊 Would you be free for a quick call this week? Even just 10 minutes and we can get the ball rolling 📞</div>
+      <button class="copy-btn" onclick="copyMsg('msg16',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5595072822">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5595072822','msg16');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 507-2822</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Alejandro</div>
+        <div class="meta">investor · asked about permit records · sharp buyer</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg17">Hey Alejandro! 👋 This is Josiah from Nik&#x27;s team! You asked some really smart questions about that investment property — I did some research and I think you&#x27;ll like what I found 🌟 Can we set up a quick call this week to go over the details? 📲</div>
+      <button class="copy-btn" onclick="copyMsg('msg17',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5593892849">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5593892849','msg17');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 389-2849</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Lorin J</div>
+        <div class="meta">came back after other realtor&#x27;s loan fell apart · credit gap</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg18">Hey Lorin! 😊 This is Josiah from Nik&#x27;s team! I really respect that you came back — that tells me you&#x27;re committed to making homeownership happen and we want to help you get there 💪 When are you free for a quick call this week? I&#x27;d love to map out the next steps 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg18',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:6506984243">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('6506984243','msg18');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">650 698-4243</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Mohamed Salih Hajamohaideen</div>
+        <div class="meta">drove to the office personally · very hot lead</div>
+      </div>
+      <span class="badge hot">🔥 Hot Lead</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg19">Hey Mohamed! 🌟 This is Josiah from Nik&#x27;s team! The fact that you drove all the way to the office tells me everything — you&#x27;re serious and I want to make sure we match that energy for you 🏡 What day this week works for a quick call? Let&#x27;s get you into something great 📞</div>
+      <button class="copy-btn" onclick="copyMsg('msg19',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:6463749466">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('6463749466','msg19');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">646 374-9466</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Andres Garcia</div>
+        <div class="meta">interested in Chowchilla · 10 views in 7 days</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg20">Hey Andres! 😊 This is Josiah from Nik&#x27;s team! I noticed you&#x27;ve been checking out homes in the Chowchilla area — looks like something caught your eye! 👀 I&#x27;d love to hop on a quick call and hear more about what you&#x27;re looking for. What day this week works best? 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg20',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5594160740">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5594160740','msg20');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 416-0740</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Phoebe Hunt</div>
+        <div class="meta">started searching again after being inactive</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg21">Hey Phoebe! 👋 This is Josiah from Nik&#x27;s team! I saw you&#x27;ve jumped back into the home search — that&#x27;s exciting! 🌟 I&#x27;d love to get on a quick call and find out what direction you&#x27;re heading now. When are you free this week? 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg21',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5593586589">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5593586589','msg21');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 358-6589</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Zack Harvey</div>
+        <div class="meta">browsing Dallas TX market · exploring options</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg22">Hey Zack! 🌟 This is Josiah from Nik&#x27;s team! I saw you&#x27;ve been checking out some homes in Texas — that&#x27;s an interesting market to watch 👀 I want to make sure we&#x27;re helping you find the right fit wherever you&#x27;re searching. Would you have time for a quick call this week? 📞</div>
+      <button class="copy-btn" onclick="copyMsg('msg22',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:4088385213">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('4088385213','msg22');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">408 838-5213</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Abraham Beltran</div>
+        <div class="meta">phone-origin lead · zero text replies · try evening call</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg23">Hey Abraham! 😊 This is Josiah from Nik&#x27;s team! I know texting isn&#x27;t always the best way to reach you — would you be open to a quick phone call this week? 📞 I just want to check in and make sure you&#x27;re still being taken care of 🏡 What time works best for you?</div>
+      <button class="copy-btn" onclick="copyMsg('msg23',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5595056865">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5595056865','msg23');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 505-6865</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Ermie Gomez</div>
+        <div class="meta">broke silence by sending a TikTok</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg24">Hey Ermie! 😄 This is Josiah from Nik&#x27;s team! That TikTok you sent had me laughing — love the energy! 🌟 I&#x27;d love to get on a quick call with you this week and talk about what you&#x27;re looking for in a home. When are you free? 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg24',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5597613846">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5597613846','msg24');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 761-3846</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Jahnessa Muratalla</div>
+        <div class="meta">healthcare worker · weekends only · under $400k Kerman</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg25">Hey Jahnessa! 😊 This is Josiah from Nik&#x27;s team! I know you work hard in healthcare and weekends are your window — I want to make sure we have something great lined up for you in the Kerman area 🏡 Would you have a few minutes for a quick call to plan the perfect weekend tour? 📞</div>
+      <button class="copy-btn" onclick="copyMsg('msg25',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5598942316">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5598942316','msg25');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 894-2316</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Miguel Molinero Saucedo</div>
+        <div class="meta">offer-ready · toured 4 homes · waiting on Corbin</div>
+      </div>
+      <span class="badge hot">🔥 Hot Lead</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg26">Hey Miguel! 🌟 This is Josiah from Nik&#x27;s team! You are SO close — you&#x27;ve seen the homes, you know which one you want 💪 Can we do a quick call this week to make sure we&#x27;re ready to move the second we get the green light? 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg26',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5598013874">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5598013874','msg26');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 801-3874</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Nathan Galicia</div>
+        <div class="meta">called Corbin himself · then went dark</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg27">Hey Nathan! 😊 This is Josiah from Nik&#x27;s team! The fact that you called Corbin yourself shows how serious you are and I love that 🌟 I want to make sure we keep that momentum going. When are you free for a quick call this week? Let&#x27;s get back on track 📞</div>
+      <button class="copy-btn" onclick="copyMsg('msg27',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5597181008">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5597181008','msg27');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 718-1008</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Rodney O. Jones</div>
+        <div class="meta">replied in-meeting · 4bd + pool + walk-in · $400-450k</div>
+      </div>
+      <span class="badge hot">🔥 Hot Lead</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg28">Hey Rodney! 👋 This is Josiah from Nik&#x27;s team! I know you stay busy but I want to make sure we find you that dream home with the pool 🏊 I&#x27;ve been keeping an eye out for you! What day works best for a quick call this week? 🌟</div>
+      <button class="copy-btn" onclick="copyMsg('msg28',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5598603777">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5598603777','msg28');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 860-3777</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">George</div>
+        <div class="meta">out-of-area buyer · planning an October Fresno trip</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg29">Hey George! 🌟 This is Josiah from Nik&#x27;s team! I know you&#x27;re planning to come out to Fresno and I want to make sure your trip is worth every mile 😊 Can we hop on a quick call this week to plan everything out? I want to have the best homes lined up when you arrive 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg29',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:4423069594">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('4423069594','msg29');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">442 306-9594</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Laura Tieman</div>
+        <div class="meta">rejected prior batch · needs Clovis 2200+ sqft</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg30">Hey Laura! 😊 This is Josiah from Nik&#x27;s team! I know the last batch wasn&#x27;t quite right — I want to make sure the next ones are on point 🎯 Would you be free for a quick call this week? I want to make sure I fully understand what you&#x27;re looking for in Clovis 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg30',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:2096756967">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('2096756967','msg30');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">209 675-6967</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Calvin Simmons</div>
+        <div class="meta">3-5bd · big yard · pool · $500k · Fresno or Clovis</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg31">Hey Calvin! 🌟 This is Josiah from Nik&#x27;s team! You gave us the best wish list — 3-5 bed, big yard, pool, up to $500k in Fresno or Clovis 🏊 I want to make sure we find that dream home! When are you free for a quick call this week? 😊</div>
+      <button class="copy-btn" onclick="copyMsg('msg31',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5597769653">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5597769653','msg31');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 776-9653</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Marian Ramirez</div>
+        <div class="meta">loved Madison showing · application pending</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg32">Hey Marian! 😊 This is Josiah from Nik&#x27;s team! I know you loved that Madison showing — that&#x27;s exciting! 🌟 I want to help you get to the finish line. Would you be free for a quick call this week? I think we can make it happen 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg32',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5598347100">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5598347100','msg32');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 834-7100</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Jesus Jimenez</div>
+        <div class="meta">mid-tour momentum · replied yes · has 2 favorites</div>
+      </div>
+      <span class="badge hot">🔥 Hot Lead</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg33">Hey Jesus! 🌟 This is Josiah from Nik&#x27;s team! You&#x27;ve been amazing throughout this whole process — it sounds like you&#x27;re getting close to finding the one! 🏡 I want to keep that momentum going. When are you free for a quick call this week? 😊</div>
+      <button class="copy-btn" onclick="copyMsg('msg33',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5593887454">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5593887454','msg33');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 388-7454</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Ali</div>
+        <div class="meta">started searching again · now looking in CA 92395</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg34">Hey Ali! 👋 This is Josiah from Nik&#x27;s team! I saw you&#x27;ve been jumping back into the search — that&#x27;s exciting! 🌟 I&#x27;d love to hop on a quick call and find out what you&#x27;re looking for right now. What day this week works best for you? 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg34',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:2132845420">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('2132845420','msg34');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">213 284-5420</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Desmend Yarbrough</div>
+        <div class="meta">divorce situation · human check only · no listings yet</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg35">Hey Desmend! 😊 This is Josiah from Nik&#x27;s team! Just wanted to check in and see how you&#x27;re doing — no pressure, no listings, just checking in 👋 I want you to know we&#x27;re here for you whenever you&#x27;re ready 🌟 Would you be open to a quick call this week just to catch up?</div>
+      <button class="copy-btn" onclick="copyMsg('msg35',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5593755379">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5593755379','msg35');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 375-5379</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Joaquin Castellanos</div>
+        <div class="meta">Chico CA buyer · corrected geography</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg36">Hey Joaquin! 🌟 This is Josiah from Nik&#x27;s team! Chico — got it, that&#x27;s where we&#x27;re focused! 😊 I&#x27;d love to hop on a quick call this week to hear more about what you&#x27;re looking for up there. When are you free? 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg36',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:7144120177">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('7144120177','msg36');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">714 412-0177</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Alessia</div>
+        <div class="meta">back in group chat after leaving · starting fresh</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg37">Hey Alessia! 😊 This is Josiah from Nik&#x27;s team! I&#x27;m so glad you&#x27;re back — I want to make sure we do this right for you this time 🌟 Would you be free for a quick call this week? I&#x27;d love to hear what&#x27;s most important to you now 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg37',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5597277250">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5597277250','msg37');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 727-7250</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Jackie Hampton</div>
+        <div class="meta">first-time buyer program · planning model home day</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg38">Hey Jackie! 🌟 This is Josiah from Nik&#x27;s team! I love that you&#x27;re going for that first-time buyer dream — you deserve this! 🏡 I want to make sure we have everything set for your model home visit. When are you free for a quick call this week? 😊</div>
+      <button class="copy-btn" onclick="copyMsg('msg38',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5593518394">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5593518394','msg38');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 351-8394</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Joanna Espindola</div>
+        <div class="meta">focused on Easton/Caruthers area · couple decision</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg39">Hey Joanna! 😊 This is Josiah from Nik&#x27;s team! I know you and your partner are locked in on the Easton/Caruthers area — I love that focus! 🏡 I&#x27;d love to jump on a quick call and make sure we&#x27;re sending you exactly the right fit. When are you free this week? 🌟</div>
+      <button class="copy-btn" onclick="copyMsg('msg39',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5598013474">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5598013474','msg39');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 801-3474</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Victor Largo</div>
+        <div class="meta">cold on text · warm on phone · 1.5+ acres target</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg40">Hey Victor! 👋 This is Josiah from Nik&#x27;s team! I figure a real conversation beats a text anyway 😊 I know you&#x27;re looking for land and acreage — I&#x27;d love to call you this week and hear more about exactly what you have in mind 🌾 What day works best? 📞</div>
+      <button class="copy-btn" onclick="copyMsg('msg40',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5595695564">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5595695564','msg40');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 569-5564</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Anthony</div>
+        <div class="meta">ag buyer · water district is key · waiting on that answer</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg41">Hey Anthony! 🌟 This is Josiah from Nik&#x27;s team! That water district question you asked is the right question — too important to get wrong 💧 I&#x27;ve been digging into it and I&#x27;d love to share what I found on a quick call this week. When are you free? 😊</div>
+      <button class="copy-btn" onclick="copyMsg('msg41',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5595678939">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5595678939','msg41');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 567-8939</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Kevin</div>
+        <div class="meta">text-dead · phone is the right channel · evenings work</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg42">Hey Kevin! 😊 This is Josiah from Nik&#x27;s team! I know texting hasn&#x27;t been the best way to connect — would you be open to a quick phone call this week? 📞 I just want to make sure we&#x27;re still looking out for you and finding the right home 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg42',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5595074023">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5595074023','msg42');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 507-4023</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Yolanda Escamilla</div>
+        <div class="meta">holding off until next year · nurture relationship</div>
+      </div>
+      <span class="badge nurture">🌱 Nurture</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg43">Hey Yolanda! 🌟 This is Josiah from Nik&#x27;s team! I completely understand you&#x27;re planning to pick things back up next year — no rush at all! 😊 I just wanted to reach out and say we&#x27;re thinking of you and we&#x27;ll be ready whenever the time is right 🏡 Would you ever want a quick check-in call?</div>
+      <button class="copy-btn" onclick="copyMsg('msg43',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5592842791">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5592842791','msg43');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 284-2791</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Reynaldo Maravilla</div>
+        <div class="meta">HOT · replied asking who to call · lives in Firebaugh</div>
+      </div>
+      <span class="badge hot">🔥 Hot Lead</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg44">Hey Reynaldo!! 🌟 This is Josiah from Nik&#x27;s team — I am EXACTLY who you can call! That&#x27;s why I&#x27;m reaching out 😄 You&#x27;re the kind of person we love working with — ready to move, ready to find answers 💪 What day this week can we get on the phone? I want to find you something in your budget out in Firebaugh 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg44',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5596308914">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5596308914','msg44');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 630-8914</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Karen Lopez</div>
+        <div class="meta">723 score · Corbin re-running numbers · strong position</div>
+      </div>
+      <span class="badge hot">🔥 Hot Lead</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg45">Hey Karen! 😊 This is Josiah from Nik&#x27;s team! You&#x27;re in a really strong spot with that 723 — Corbin is working on the numbers right now and things are looking good 🌟 I&#x27;d love to hop on a quick call this week to keep things moving. What day works best? 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg45',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5595673843">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5595673843','msg45');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 567-3843</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Daniel Burkart</div>
+        <div class="meta">Madera with land + shop · replied Copy that</div>
+      </div>
+      <span class="badge hot">🔥 Hot Lead</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg46">Hey Daniel! 👋 This is Josiah from Nik&#x27;s team! I know you&#x27;re on a mission to find the right place in Madera with land and shop space — that&#x27;s a specific search and I want to make sure we nail it 🌾 I&#x27;d love to do a quick call this week to stay locked in. What day works? 😊</div>
+      <button class="copy-btn" onclick="copyMsg('msg46',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:4087699598">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('4087699598','msg46');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">408 769-9598</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Malcolm MacDonald</div>
+        <div class="meta">$4M buyer · 10-year watch on one property</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg47">Hey Malcolm! 🌟 This is Josiah from Nik&#x27;s team! I know you&#x27;ve been patient — a 10-year watch on a property shows real conviction 👀 I want to make sure we&#x27;re keeping a close eye for you. Would you be open to a quick call this week just to touch base? 😊</div>
+      <button class="copy-btn" onclick="copyMsg('msg47',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5592507328">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5592507328','msg47');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 250-7328</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Phareal Perry</div>
+        <div class="meta">started searching again after inactive period</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg48">Hey Phareal! 👋 This is Josiah from Nik&#x27;s team! I saw you&#x27;ve jumped back into the home search — love to see it! 🌟 I&#x27;d love to hop on a quick call and find out what you&#x27;re looking for right now. When are you free this week? 🏡</div>
+      <button class="copy-btn" onclick="copyMsg('msg48',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5595730051">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5595730051','msg48');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 573-0051</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <div class="name">Francisco Guzman</div>
+        <div class="meta">replied thank you · wife is decision maker · stay in budget</div>
+      </div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="msg-section">
+      <div class="msg-label">Call-scheduling text</div>
+      <div class="msg-box" id="msg49">Hey Francisco! 😊 This is Josiah from Nik&#x27;s team! I want to make sure we find something that the whole family loves — something you and your wife both feel great about within budget 🏡 Can we do a quick call this week? I&#x27;d love to find out more about what matters most to both of you 🌟</div>
+      <button class="copy-btn" onclick="copyMsg('msg49',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5598326689">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5598326689','msg49');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">559 832-6689</div>
+  </div>
+
+</div>
+<script>
+function openSMS(phone, msgId) {
+  var text = document.getElementById(msgId).innerText;
+  window.location.href = 'sms:' + phone + '&body=' + encodeURIComponent(text);
+}
+function copyMsg(id, btn) {
+  var text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(function() {
+    btn.textContent = '✅ Copied!';
+    setTimeout(function(){ btn.textContent = '📋 Copy text'; }, 2000);
+  }).catch(function() {
+    btn.textContent = 'Select & copy manually';
+  });
+}
+</script>
+</body>
+</html>
