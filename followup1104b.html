@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Josiah — Fresh Homes (Nov 4)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f0f0f; color: #f0f0f0; min-height: 100vh; }
+  header { background: #1a1a1a; border-bottom: 1px solid #2a2a2a; padding: 16px 20px; position: sticky; top: 0; z-index: 10; }
+  header h1 { font-size: 17px; font-weight: 700; color: #fff; }
+  header p { font-size: 12px; color: #888; margin-top: 2px; }
+  .cards { padding: 12px 16px; display: flex; flex-direction: column; gap: 14px; max-width: 540px; margin: 0 auto; }
+  .card { background: #1c1c1e; border-radius: 14px; overflow: hidden; border: 1px solid #2c2c2e; }
+  .card-header { padding: 14px 16px 10px; display: flex; justify-content: space-between; align-items: flex-start; }
+  .name { font-size: 16px; font-weight: 700; color: #fff; }
+  .meta { font-size: 11px; color: #888; margin-top: 3px; }
+  .badge { font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; margin-left: 8px; }
+  .hot { background: #ff3b3020; color: #ff6961; border: 1px solid #ff3b3040; }
+  .warm { background: #ff950020; color: #ffb340; border: 1px solid #ff950040; }
+  .context { padding: 0 16px 10px; font-size: 12px; color: #aaa; line-height: 1.5; border-bottom: 1px solid #2c2c2e; }
+  .context b { color: #ddd; }
+  .msg-section { padding: 12px 16px; }
+  .msg-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #555; margin-bottom: 6px; }
+  .msg-box { background: #2c2c2e; border-radius: 10px; padding: 12px; font-size: 13px; color: #e8e8e8; line-height: 1.6; white-space: pre-wrap; }
+  .copy-btn { margin-top: 8px; display: inline-flex; align-items: center; gap: 5px; background: #3a3a3c; border: none; color: #c8c8c8; font-size: 12px; padding: 6px 12px; border-radius: 8px; cursor: pointer; }
+  .copy-btn:active { background: #48484a; }
+  .actions { padding: 10px 16px 14px; display: flex; gap: 8px; }
+  .btn { flex: 1; padding: 10px; border-radius: 10px; border: none; font-size: 14px; font-weight: 600; text-decoration: none; text-align: center; cursor: pointer; display: block; }
+  .btn-call { background: #30d158; color: #000; }
+  .btn-sms { background: #0a84ff; color: #fff; cursor: pointer; }
+  .last { font-size: 11px; color: #666; padding: 0 16px 12px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Fresh Homes to Send</h1>
+  <p>Josiah — 8 buyers · all new listings · verified FOR SALE · Nov 4, 2026</p>
+</header>
+<div class="cards">
+
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Carlos Larios</div><div class="meta">📍 Sanger/Reedley · ~$400k · 3bd</div></div>
+      <span class="badge hot">🔥 Active</span>
+    </div>
+    <div class="context">Looking to buy around <b>$400k in the Reedley area</b> — very motivated, wants to move fast.</div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-carlos">Hey Carlos!! 🏡 Josiah here from Nik's team — I found 3 brand new listings for sale right now near Reedley that just hit the market! 👇
+
+🌟 557 Tucker Ave, Sanger — $337,500 | 3bd
+🏠 1928 Richard Ave, Sanger — $440,000 | 3bd
+✨ Willow Plan at Blossom Hill, Sanger — $426,900 | 3bd (new build!)
+
+Want to go take a look? I can set something up this week! 🔑</div>
+      <button class="copy-btn" onclick="copyMsg('msg-carlos',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5596436562">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5596436562','msg-carlos');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">Last activity: Sep 28 · (559) 643-6562</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Luis Madrigal</div><div class="meta">📍 Clovis · $350–450k · FTB · 90k down</div></div>
+      <span class="badge hot">🔥 Active</span>
+    </div>
+    <div class="context">First-time buyer, $350–450k, 700 score, 90k down. Very motivated.</div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-luis">Hey Luis! 😊 It's Josiah from Nik's team! Just pulled up 3 fresh homes for sale in Clovis — these just came up and they're all in great shape 🏡
+
+🌟 754 W Beverly Dr, Clovis — $429,900 | 3bd/2ba
+🔑 3107 Paula Dr, Clovis — $349,900 | 3bd/2ba (great deal!)
+✨ 915 W Alamos Ave, Clovis — $370,000 | 3bd/2ba
+
+Any of these catch your eye? Let's get you in to walk one! 👀</div>
+      <button class="copy-btn" onclick="copyMsg('msg-luis',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5594791775">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5594791775','msg-luis');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">Last activity: Sep 28 · (559) 479-1775</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Jahnessa Muratalla</div><div class="meta">📍 Fowler/Selma · under $400k · weekends only</div></div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="context">Healthcare worker, under $400k near Kerman. Weekends only for showings, morning replier.</div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-jahnessa">Hey Jahnessa! 👋 This is Josiah from Nik's team! Found 3 homes currently for sale in the area — these are all fresh listings right now 🏡
+
+🌟 1128 W Walter Ave, Fowler — $330,000 | 3bd (great price!)
+🏠 1415 Harris Ct, Fowler — $305,000 | 3bd
+✨ 2595 Pine St, Selma — $375,000 | 3bd/2ba
+
+Inventory moves fast in this area! Want to walk one this weekend? 😊</div>
+      <button class="copy-btn" onclick="copyMsg('msg-jahnessa',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5598942316">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5598942316','msg-jahnessa');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">Last activity: Sep 28 · (559) 894-2316</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Serena Vindiola Morales</div><div class="meta">📍 Fresno/Clovis · ~$270k · 3bd · first-time buyer</div></div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="context">First-time buyer in Fresno, ~$270k range, 3bd/2ba. Very motivated, moves fast.</div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-serena">Hi Serena! 🤩 Josiah here from Nik's team! Found 3 homes for sale right now in your budget — all currently active! 🏡
+
+🌟 5062 N Forkner Ave, Fresno — $250,000 | 3bd
+🏠 119 W Norwich Ave, Clovis — $275,000 | 4bd/2ba (extra room!)
+✨ 1650 Villa Ave, Clovis — $204,900 | 3bd/2ba (great deal!)
+
+These won't last long at these prices! Want to go see one this week? 🔑</div>
+      <button class="copy-btn" onclick="copyMsg('msg-serena',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5598017445">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5598017445','msg-serena');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">Last activity: Sep 28 · (559) 801-7445</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Stephanie Beltran</div><div class="meta">📍 Clovis · ~$350k · FHA/USDA loan</div></div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="context">Looking to buy ~$350k, FHA or USDA loan. Motivated buyer.</div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-stephanie">Hey Stephanie! 😊 It's Josiah from Nik's team! Just found 3 great homes for sale in Clovis that work perfectly for FHA financing 🏡
+
+🌟 3107 Paula Dr, Clovis — $349,900 | 3bd/2ba (perfect price!)
+🏠 915 W Alamos Ave, Clovis — $370,000 | 3bd/2ba
+✨ 1056 De Witt Ave, Clovis — $365,000 | 3bd/2ba
+
+All for sale right now! Want to take a look at any of these? Let's make it happen 🔑</div>
+      <button class="copy-btn" onclick="copyMsg('msg-stephanie',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5597550359">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5597550359','msg-stephanie');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">Last activity: Sep 28 · (559) 755-0359</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Berenice Zavala</div><div class="meta">📍 Visalia/Porterville · ~$330k · first-time buyer</div></div>
+      <span class="badge warm">⚡ Active</span>
+    </div>
+    <div class="context">First-time buyer with dad + husband. Wants country/ranch feel. Limited inventory in Reedley right now — found great options nearby!</div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-berenice">Hey Berenice! 🤩 Josiah here from Nik's team! Reedley inventory is super tight right now so I found some great options in nearby areas with that same feel you're looking for 🏡
+
+🌟 1215 N Highland St, Visalia — $319,900 | 3bd (nice lot!)
+🏠 1659 W School Ave, Porterville — $329,000 | 3bd
+✨ 2281 W Putnam Ct, Porterville — $339,000 | 3bd/2ba
+
+All for sale right now! Want to go take a look with your dad and husband? 🔑</div>
+      <button class="copy-btn" onclick="copyMsg('msg-berenice',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5595964243">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5595964243','msg-berenice');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">Last activity: Oct 26 · (559) 596-4243</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Daniel Fox</div><div class="meta">📍 Chowchilla · $400k · VA Loan · police officer</div></div>
+      <span class="badge hot">🔥 Active</span>
+    </div>
+    <div class="context">Police officer, pre-approved $400k VA. Wants big yard. Chowchilla has better lot sizes right now.</div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-daniel">Hey Daniel! 👋 Josiah here from Nik's team! Found 3 fresh homes for sale with great yards — all verified active listings right now 🏡
+
+🌟 365 N 15th St, Chowchilla — $365,000 | 3bd/2ba
+🏠 1576 Roosevelt Dr, Chowchilla — $320,000 | 3bd/2ba
+✨ 716 Humboldt Ave, Chowchilla — $319,000 | 3bd/2ba (great value!)
+
+All VA-eligible and no PMI! Want to walk one this week? 🔑</div>
+      <button class="copy-btn" onclick="copyMsg('msg-daniel',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:5594791775">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('5594791775','msg-daniel');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">Last activity: Oct 27 · (559) 479-1775</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div><div class="name">Mohamed Salih</div><div class="meta">📍 Clovis · $250–425k · 3bd · HOT buyer</div></div>
+      <span class="badge hot">🔥 HOT</span>
+    </div>
+    <div class="context">HOT buyer — literally drove to the office to meet us. Very motivated, toured 3 homes and loved them all.</div>
+    <div class="msg-section">
+      <div class="msg-label">Text to send</div>
+      <div class="msg-box" id="msg-mohamed">Hey Mohamed! 😊 It's Josiah from Nik's team! I found 3 fresh homes for sale in Clovis right now — all brand new to the market 🏡
+
+🌟 3107 Paula Dr, Clovis — $349,900 | 3bd/2ba
+🏠 915 W Alamos Ave, Clovis — $370,000 | 3bd/2ba
+✨ 1056 De Witt Ave, Clovis — $365,000 | 3bd/2ba
+
+I know you move fast so let's get you in ASAP — which one stands out? 🔑</div>
+      <button class="copy-btn" onclick="copyMsg('msg-mohamed',this)">📋 Copy text</button>
+    </div>
+    <div class="actions">
+      <a class="btn btn-call" href="tel:6463749466">📞 Call</a>
+      <a class="btn btn-sms" href="#" onclick="openSMS('6463749466','msg-mohamed');return false;">💬 iMessage</a>
+    </div>
+    <div class="last">Last activity: Sep 28 · (646) 374-9466</div>
+  </div>
+
+</div>
+<script>
+function openSMS(phone, msgId) {
+  var text = document.getElementById(msgId).innerText;
+  window.location.href = 'sms:' + phone + '&body=' + encodeURIComponent(text);
+}
+function copyMsg(id, btn) {
+  var text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(function() {
+    btn.textContent = '✅ Copied!';
+    setTimeout(function(){ btn.textContent = '📋 Copy text'; }, 2000);
+  }).catch(function() { btn.textContent = 'Select & copy manually'; });
+}
+</script>
+</body>
+</html>
